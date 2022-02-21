@@ -20,6 +20,8 @@ username = ''
 
 password = ''
 
+steam_client = SteamClient(steam_api_key)
+steam_client.login(username, password, steam_guard_path)
 
 def get_desired_price():
     def truncate(n, decimals=0):
@@ -281,13 +283,10 @@ def make_a_trade():
         return False
 
 
-steam_client.login(username, password, steam_guard_path)
-
 driver = webdriver.Chrome(chromedriver_path)
-driver.get('https://backpack.tf/classifieds?item=Mann+Co.+Supply+Crate+Key&quality=6&tradable=1&craftable=1&australium=-1&killstreak_tier=0')
+driver.get('https://backpack.tf/stats/Unique/Mann%20Co.%20Supply%20Crate%20Key/Tradable/Craftable')
 
 game = GameOptions.TF2
-steam_client = SteamClient(steam_api_key)
 
 while True:
     try:
